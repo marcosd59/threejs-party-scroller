@@ -14,9 +14,15 @@ Este proyecto utiliza THREE.js para crear una experiencia interactiva en 3D que 
 
 ## Capturas de Pantalla
 
+### Inicio
+
 ![IMAGEN-1](./screenshots/Data-Break-Fest-01.png)
 
+### Bola Disco
+
 ![IMAGEN-2](./screenshots/Data-Break-Fest-02.png)
+
+### Final
 
 ![IMAGEN-3](./screenshots/Data-Break-Fest-03.png)
 
