@@ -70,11 +70,13 @@ scene.background = spaceTexture;
 
 // Music
 
-let audio = new Audio("./music/Techno-Mix.mp3");
-audio.loop = true;
-audio.play().catch(function (error) {
-  console.error("Error al reproducir el audio:", error);
-});
+// let audio = new Audio("./music/Techno-Mix.mp3");
+// audio.loop = true;
+
+// No reproducir automáticamente
+// audio.play().catch(function (error) {
+//   console.error("Error al reproducir el audio:", error);
+// });
 
 // Avatar
 
@@ -88,6 +90,32 @@ const jeff = new THREE.Mesh(
 scene.add(jeff);
 
 // Eventos - Dar click en Jeff para reproducir/pausar la música
+
+let video = document.querySelector("video");
+
+document.addEventListener("click", function (event) {
+  // Actualizar el vector del ratón
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  // Actualizar el raycaster con el vector del ratón
+  raycaster.setFromCamera(mouse, camera);
+
+  // Comprobar si el raycaster intersecta con Jeff
+  let intersects = raycaster.intersectObjects([jeff]);
+
+  if (intersects.length > 0) {
+    // Si el video se está reproduciendo, pausarlo
+    // Si no, reproducirlo
+    if (!video.paused) {
+      video.pause();
+    } else {
+      video.play().catch(function (error) {
+        console.error("Error al reproducir el video:", error);
+      });
+    }
+  }
+});
 
 let mouse = new THREE.Vector2();
 let raycaster = new THREE.Raycaster();
